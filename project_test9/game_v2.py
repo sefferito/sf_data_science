@@ -15,18 +15,18 @@ def random_predict(number: int = 1) -> int:
         int: Число попыток
     """
     count = 0
-    predict_number = 50 # предполагаемое число
-    predict_number_min = 0
-    predict_number_max = 101
+    predict_number = 50 # первое предполагаемое число
+    predict_number_min = 0 #минимальная граница поиска
+    predict_number_max = 101 #максимальная граница поиска
 
     while True:
         count += 1
-        if number < predict_number:
+        if number < predict_number: # если загаданное число меньше предполагаемого
             predict_number_max = predict_number
-            predict_number = (predict_number_max - predict_number_min) // 2 + predict_number_min
-        if number > predict_number:
+            predict_number = (predict_number_max - predict_number_min) // 2 + predict_number_min # сокращаем границы поиска пополам
+        if number > predict_number: # если загаданное число больше предполагаемого
             predict_number_min = predict_number
-            predict_number = (predict_number_max - predict_number_min) // 2 + predict_number_min
+            predict_number = (predict_number_max - predict_number_min) // 2 + predict_number_min # сокращаем границы поиска пополам
         if number == predict_number:
             break  # выход из цикла если угадали
     return count
